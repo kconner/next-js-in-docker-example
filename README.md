@@ -35,6 +35,7 @@ Check my commit messages to see the tutorial articles I'm following.
 - Install Docker and VS Code.
 - Open `app.code-workspace`. VS Code will recommend a Docker plugin if you don't have it, so install that.
 - To build and run, right-click `docker-compose.yml` for release mode or `docker-compose.debug.yml` for debug mode and select Compose Up.
+    - In VS Code's activity bar, click the Docker icon to view running containers.
     - With either container running, visit localhost:3000 to view the site.
     - With the debug container running, visit localhost:6006 to view Storybook. It may take a moment for the Storybook server to start after the container launches.
     - With the debug container running, save a code file to hot-reload the browser.
