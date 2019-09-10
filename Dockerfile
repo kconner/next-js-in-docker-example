@@ -13,8 +13,8 @@ COPY . .
 FROM test-stage as build-stage
 ENV NODE_ENV=production
 
-RUN npm prune --production
 RUN npm run build
+RUN npm prune --production
 
 # Archive
 FROM node:12.8-alpine as archive-stage

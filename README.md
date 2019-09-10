@@ -14,7 +14,7 @@ Check my commit messages to see the tutorial articles I'm following.
 - [x] Debuggable in VS Code
 - [x] Debug and Release container variants
 - [x] Next.js
-- [ ] TypeScript
+- [x] TypeScript
 - [ ] Optionally run Storybook in the debug case
 - [ ] Run CI tools in a test stage container in the release case, then complete the build
 
