@@ -1,7 +1,7 @@
 version: '3.4'
 
 services:
-  example-service-debug:
+  example-debug:
     build:
       context: .
       target: test-stage
@@ -14,3 +14,13 @@ services:
     environment:
       NODE_OPTIONS: --inspect=0.0.0.0
     command: node_modules/.bin/next
+  example-storybook:
+    build:
+      context: .
+      target: test-stage
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - 6006:6006
+    command: npm run storybook
