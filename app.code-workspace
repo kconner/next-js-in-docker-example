@@ -10,6 +10,13 @@
 				"remoteRoot": "/usr/src/app",
 				"protocol": "inspector",
 				"restart": true
+			},
+			{
+				"name": "Local Server (just in case)",
+				"type": "node",
+				"request": "launch",
+				"program": "${workspaceFolder}/node_modules/.bin/next",
+				"console": "integratedTerminal"
 			}
 		],
 		"compounds": []
