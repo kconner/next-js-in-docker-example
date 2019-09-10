@@ -12,4 +12,6 @@ services:
     ports:
       - 3000:3000
       - 9229:9229
-    command: npm run start:debug
+    environment:
+      NODE_OPTIONS: --inspect=0.0.0.0
+    command: node_modules/.bin/next
