@@ -1,0 +1,13 @@
+version: '3.4'
+
+services:
+  example-service-debug:
+    build:
+      context: .
+      target: test-stage
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - 6006:6006
+    command: npm run storybook

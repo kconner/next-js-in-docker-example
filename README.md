@@ -15,19 +15,20 @@ Check my commit messages to see the tutorial articles I'm following.
 - [x] Debug and Release container variants
 - [x] Next.js
 - [x] TypeScript
-- [ ] Optionally run Storybook in the debug case
-- [ ] Run CI tools in a test stage container in the release case, then complete the build
+- [x] Allow launching Storybook at the test stage
+- [ ] Allow running CI tools at the test stage
 
-## How this sample uses Docker
+## How this setup uses Docker
 
-- `docker-compose.yml` prepares a release archive.
-- `docker-compose.debug.yml` prepares a debugging container.
+- `docker-compose.yml` prepares a release archive and runs a production web server.
+- `docker-compose.debug.yml` prepares a test container and runs a debuggable web server.
+- `docker-compose.storybook.yml` prepares a test container and runs Storybook.
 - `Dockerfile` describes a multi-stage build.
     - The test stage includes a copy of the checked out workspace with all packages installed. The build for the debug container stops here. The release case could run CI tools at this stage. 
     - The build stage continues by removing development packages and preparing a release build.
     - The archive stage starts fresh and copies in just what's needed at runtime for a small release container.
 
-## How to use this
+## How to use this setup
 
 - Clone the repo.
 - Install Docker and VS Code.
@@ -37,3 +38,4 @@ Check my commit messages to see the tutorial articles I'm following.
 - With the debug container running, save a code file to hot-reload the browser.
 - With the debug container running, select Start Debugging from the Debug menu to attach the debugger. Then click in VS Code's gutter to set breakpoints.
 - Right-click again and select Compose Down to stop.
+- Use `docker-compose.storybook.yml` to run Storybook at localhost:6006. It may take a moment for the server to start after the container launches.
