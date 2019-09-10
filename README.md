@@ -32,9 +32,8 @@ Check my commit messages to see the tutorial articles I'm following.
 - Clone the repo.
 - Install Docker and VS Code.
 - Open `app.code-workspace`. VS Code will recommend a Docker plugin if you don't have it, so install that.
-- Right-click `docker-compose.yml` and select Compose Up to build and run in release mode.
-- Right-click `docker-compose.debug.yml` and select Compose Up to build and run in debug mode.
+- To build and run, right-click `docker-compose.yml` for release mode or `docker-compose.debug.yml` for debug mode and select Compose Up.
 - With either container running, visit localhost:3000 to view the site.
 - With the debug container running, save a code file to hot-reload the browser.
 - With the debug container running, select Start Debugging from the Debug menu to attach the debugger. Then click in VS Code's gutter to set breakpoints.
-- Right click again and select Compose Down to stop.
+- Right-click again and select Compose Down to stop.
