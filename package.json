@@ -6,7 +6,8 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "storybook": "start-storybook -p 6006 -c .storybook"
+    "storybook": "start-storybook -p 6006 -c .storybook",
+    "test:unit": "jest"
   },
   "author": "",
   "license": "ISC",
@@ -17,11 +18,14 @@
   },
   "devDependencies": {
     "@storybook/react": "^5.1.11",
+    "@types/jest": "^24.0.18",
     "@types/node": "^12.7.4",
     "@types/react": "^16.9.2",
     "@types/react-dom": "^16.9.0",
     "@types/storybook__react": "^4.0.2",
     "fork-ts-checker-webpack-plugin": "^1.5.0",
+    "jest": "^24.9.0",
+    "ts-jest": "^24.0.2",
     "typescript": "^3.6.2"
   }
 }

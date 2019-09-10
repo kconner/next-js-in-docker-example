@@ -17,6 +17,7 @@ Check my commit messages to see the tutorial articles I'm following.
 - [x] TypeScript
 - [x] Allow launching Storybook at the test stage
 - [ ] Allow running CI tools at the test stage
+- [ ] Allow debugging individual tests
 
 ## How this setup uses Docker
 

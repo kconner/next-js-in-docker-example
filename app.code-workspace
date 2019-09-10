@@ -12,12 +12,29 @@
 				"restart": true
 			},
 			{
-				"name": "Local Server (just in case)",
+				"name": "Server (Local)",
 				"type": "node",
 				"request": "launch",
 				"program": "${workspaceFolder}/node_modules/.bin/next",
 				"console": "integratedTerminal"
-			}
+			},
+			{
+				"name": "Unit Tests (Local)",
+				"type": "node",
+				"request": "launch",
+				"program": "${workspaceFolder}/node_modules/.bin/jest",
+				"console": "integratedTerminal"
+			},
+			{
+				"name": "Current File as Unit Test (Local)",
+				"type": "node",
+				"request": "launch",
+				"program": "${workspaceFolder}/node_modules/.bin/jest",
+				"args": [
+					"${file}"
+				],
+				"console": "integratedTerminal"
+			},
 		],
 		"compounds": []
 	},
