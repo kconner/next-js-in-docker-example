@@ -7,3 +7,11 @@ Then I'd like to implement both development and production branches of this beha
 Then I'd like to try this with a Next.js app, which changes the nature of how you build and run.
 
 Check my commit messages to see the tutorial articles I'm following.
+
+---
+
+- [x] Node app in Docker
+- [x] Debuggable in VS Code
+- [x] Debug and Release container variants
+- [x] Next.js
+- [ ] TypeScript
