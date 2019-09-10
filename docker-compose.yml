@@ -1,14 +1,8 @@
-version: '3'
+version: '3.4'
 
 services:
   example-service:
-    build:
-      context: .
-      args:
-        NODE_ENV: production
-    volumes:
-      - .:/usr/src/app
-      - /usr/src/app/node_modules
+    build: .
     ports:
       - 3000:3000
     command: npm run start
