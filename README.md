@@ -15,13 +15,15 @@ Check my commit messages to see the tutorial articles I'm following.
 - [x] Debug and Release container variants
 - [x] Next.js
 - [ ] TypeScript
+- [ ] Optionally run Storybook in the debug case
+- [ ] Run CI tools in a test stage container in the release case, then complete the build
 
 ## How this sample uses Docker
 
 - `docker-compose.yml` prepares a release archive.
 - `docker-compose.debug.yml` prepares a debugging container.
 - `Dockerfile` describes a multi-stage build.
-    - The test stage includes a copy of the checked out workspace with all packages installed. The build for the debug container stops here.
+    - The test stage includes a copy of the checked out workspace with all packages installed. The build for the debug container stops here. The release case could run CI tools at this stage. 
     - The build stage continues by removing development packages and preparing a release build.
     - The archive stage starts fresh and copies in just what's needed at runtime for a small release container.
 
