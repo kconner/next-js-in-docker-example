@@ -1,11 +1,12 @@
 version: '3'
 
 services:
-  example-service:
+  example-service-debug:
     build: .
     volumes:
       - .:/usr/src/app
       - /usr/src/app/node_modules
     ports:
       - 3000:3000
-    command: npm run start
+      - 9229:9229
+    command: npm run start:debug
