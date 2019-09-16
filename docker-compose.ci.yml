@@ -1,7 +1,7 @@
 version: '3.4'
 
 services:
-  site-ci:
+  site:
     build:
       context: .
       target: test-stage

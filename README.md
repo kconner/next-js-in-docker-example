@@ -35,11 +35,15 @@ Check my commit messages to see the tutorial articles I'm following.
 - Install Docker and VS Code.
 - Open `app.code-workspace`. VS Code will recommend a Docker plugin if you don't have it, so install that.
 - To build and run, right-click `docker-compose.yml` for release mode or `docker-compose.debug.yml` for debug mode and select Compose Up.
+    - Alternatively, use `npm run compose up --build` or `npm run compose:debug up --build`. These are short form invocations of `docker-compose` for each definition file.
     - In VS Code's activity bar, click the Docker icon to view running containers.
     - With either container running, visit localhost:3000 to view the site.
     - With the debug container running, visit localhost:6006 to view Storybook. It may take a moment for the Storybook server to start after the container launches.
     - With the debug container running, save a code file to hot-reload the browser.
     - With the debug container running, select Start Debugging from the Debug menu to attach the debugger. Then click in VS Code's gutter to set breakpoints. In this example, only the web server is debuggable, not Storybook.
-    - Right-click again and select Compose Down to stop.
-- To run unit tests in Docker as in continuous integration, run `npm run test:unit:ci`.
+    - To stop, right-click again and select Compose Down, or use `npm run compose:debug down`
+- To run tasks in Docker as in continuous integration:
+    - Bring up the CI service with `npm run compose:ci up --build`, or skip this step if you don't need to rebuild.
+    - Run tests with `npm run test:unit:ci`.
+    - Remove the service with `npm run compose:ci down`.
 - In addition to the Docker debugger attachment launcher, VS Code launchers also exist for debugging locally, including the web server, all unit tests, and a single unit test file.
