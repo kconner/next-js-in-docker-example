@@ -6,7 +6,7 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "storybook": "start-storybook -p 6006 -c .storybook",
+    "storybook": "start-storybook --port 6006 --config-dir .storybook --quiet",
     "test:unit": "jest",
     "test:unit:ci": "npm run compose:ci run site npm run test:unit",
     "compose:debug": "docker-compose --project-name example-debug --file docker-compose.yml",
