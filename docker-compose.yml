@@ -11,9 +11,7 @@ services:
     ports:
       - 3000:3000
       - 9229:9229
-    environment:
-      NODE_OPTIONS: --inspect=0.0.0.0
-    command: node_modules/.bin/next
+    command: npm run dev
   storybook:
     build:
       context: .
