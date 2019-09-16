@@ -9,9 +9,9 @@
     "storybook": "start-storybook -p 6006 -c .storybook",
     "test:unit": "jest",
     "test:unit:ci": "npm run compose:ci run site npm run test:unit",
-    "compose": "docker-compose --project-name example --file docker-compose.yml",
+    "compose:debug": "docker-compose --project-name example-debug --file docker-compose.yml",
     "compose:ci": "docker-compose --project-name example-ci --file docker-compose.ci.yml",
-    "compose:debug": "docker-compose --project-name example-debug --file docker-compose.debug.yml"
+    "compose:release": "docker-compose --project-name example-release --file docker-compose.release.yml"
   },
   "author": "",
   "license": "ISC",
