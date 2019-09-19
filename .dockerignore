@@ -10,3 +10,4 @@ LICENSE
 .vscode
 .next
 *.swp
+/scripts

@@ -3,15 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "dev": "next",
+    "dev": "NODE_OPTIONS='--inspect=0.0.0.0' next",
     "build": "next build",
     "start": "next start",
     "storybook": "start-storybook --port 6006 --config-dir .storybook --quiet",
-    "test:unit": "jest",
-    "test:unit:ci": "npm run compose:ci run site npm run test:unit",
-    "compose:debug": "docker-compose --project-name example-debug --file docker-compose.yml",
-    "compose:ci": "docker-compose --project-name example-ci --file docker-compose.ci.yml",
-    "compose:release": "docker-compose --project-name example-release --file docker-compose.release.yml"
+    "test:unit": "jest"
   },
   "author": "",
   "license": "ISC",

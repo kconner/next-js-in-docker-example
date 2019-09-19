@@ -11,6 +11,6 @@ spec:
     spec:
       containers:
       - name: example-container
-        image: connerk/example:${TAG}
+        image: ${IMAGE}:${VERSION}
         ports:
         - containerPort: 3000

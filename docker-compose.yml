@@ -4,7 +4,9 @@ services:
   site:
     build:
       context: .
-      target: test-stage
+      target: test-target
+      args:
+        npm_install_command: install
     volumes:
       - .:/usr/src/app
       - /usr/src/app/node_modules
@@ -15,7 +17,9 @@ services:
   storybook:
     build:
       context: .
-      target: test-stage
+      target: test-target
+      args:
+        npm_install_command: install
     volumes:
       - .:/usr/src/app
       - /usr/src/app/node_modules
