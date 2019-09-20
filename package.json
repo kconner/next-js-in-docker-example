@@ -1,7 +1,6 @@
 {
   "name": "mess-with-node-in-docker",
   "version": "1.0.0",
-  "description": "",
   "scripts": {
     "dev": "NODE_OPTIONS='--inspect=0.0.0.0' next",
     "build": "next build",
@@ -9,8 +8,6 @@
     "storybook": "start-storybook --port 6006 --config-dir .storybook --quiet",
     "test:unit": "jest"
   },
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "next": "^9.0.5",
     "react": "^16.9.0",
