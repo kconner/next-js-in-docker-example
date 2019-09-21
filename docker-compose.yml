@@ -16,8 +16,6 @@ services:
       # Changes within the container, like build output, make their way back to the host,
       # but are not strictly synchronized.
       - .:/usr/src/app:delegated
-      # dependencies are mounted privately within Docker so they will not affect the host.
-      - /usr/src/app/node_modules
     ports:
       - 3000:3000
       - 9229:9229
@@ -30,7 +28,6 @@ services:
         npm_install_command: install
     volumes:
       - .:/usr/src/app:delegated
-      - /usr/src/app/node_modules
     ports:
       - 6006:6006
     command: npm run storybook
