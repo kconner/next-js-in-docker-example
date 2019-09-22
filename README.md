@@ -1,27 +1,25 @@
-# Mess with Node in Docker
+# Next.js in Docker Example
 
-I want to set up a Node application that runs in Docker and that I can debug from VS Code.
+This repository demonstrates a Next.js web application that uses Docker for both deployment and a development environment.
 
-Then I'd like to implement both development and production branches of this behavior. I think that will mean multi-stage Docker builds for compact deployment containers.
+Check my commit messages to see the tutorial articles and documentation I followed as I built this up piece by piece.
 
-Then I'd like to try this with a Next.js app, which changes the nature of how you build and run.
-
-Check my commit messages to see the tutorial articles I'm following.
-
-## Plans
+## Progress
 
 - [x] Node app in Docker
 - [x] Debuggable in VS Code
-- [x] Debug and Release container variants
+- [x] Development and Release container variants
 - [x] Next.js
 - [x] TypeScript
 - [x] Allow launching Storybook at the test stage
 - [x] Allow running CI tools at the test stage
 - [x] Allow debugging individual tests
-- [x] Use multi-stage Docker builds
+- [x] Use multi-stage Docker builds for compact release artifacts
 - [x] Use layer caching for efficient builds
 - [x] Deploy to Kubernetes with kubectl
 - [x] Demonstrate a complete CI workflow
+- [x] Allow running CI tools against a built release artifact to validate it
+- [ ] Deploy with Helm instead of kubectl
 
 ## How this setup uses Docker
 
@@ -30,8 +28,7 @@ Check my commit messages to see the tutorial articles I'm following.
     - The build stage continues by removing development packages and preparing a release build.
     - The archive stage starts fresh and copies in just what's needed at runtime for a small release container.
 - `docker-compose.yml` prepares a development environment including a debuggable web server and a Storybook server.
-- `scripts/build-image.sh` performs a build to any stage listed in the Dockerfile and optionally pushes the build and archive images to the container registery.
-- `scripts/deploy-image.sh` deploys a container from a registry to a Kubernetes cluster with `kubectl apply`, or optionally deletes it with `kubectl delete`.
+- `scripts/run-continuous-integration.sh` and its helper scripts perform a complete CI workflow, including building the application in Docker containers, testing it, pushing it to a container registry, and deploying it to Kubernetes.
 
 ## How to use this setup
 
