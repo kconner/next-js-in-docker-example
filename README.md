@@ -21,6 +21,7 @@ Check my commit messages to see the tutorial articles I'm following.
 - [x] Use multi-stage Docker builds
 - [x] Use layer caching for efficient builds
 - [x] Deploy to Kubernetes with kubectl
+- [x] Demonstrate a complete CI workflow
 
 ## How this setup uses Docker
 
@@ -46,8 +47,5 @@ Check my commit messages to see the tutorial articles I'm following.
     - Select Start Debugging from the Debug menu to attach the debugger. Then click in VS Code's gutter to set breakpoints. In this example, only the web server is debuggable, not Storybook.
     - To stop, right-click again and select Compose Down, or use `docker-compose down`.
 - In addition to the Docker debugger attachment launcher, VS Code launchers also exist for debugging locally, including the web server, all unit tests, and a single unit test file.
-- To build, test, and deploy in a continuous integration environment:
-    - Use `./scripts/build-image.sh` with `--image` and `--target test-target` to build a CI test image.
-    - Use `./scripts/test-image.sh` to run tests in the CI test image.
-    - Use `./scripts/build-image.sh` with `--image`, `--version`, and `--push` to build a release archive and push to the registry. Pushing at this step also caches the build image's layers for later incremental builds.
-    - Use `./scripts/deploy-image.sh` with `--image` and `--version` to deploy the built release archive.
+- To build, test, and deploy in a continuous integration environment run `./scripts/run-continuous-integration.sh --image <name> --version <version>`.
+    - This workflow assumes `docker` is logged into whatever registry you attempt to use for storage and that `kubectl` is configured with a context where you can perform a deployment.

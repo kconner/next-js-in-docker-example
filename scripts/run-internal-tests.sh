@@ -4,8 +4,8 @@ function exit_with_usage {
     cat >&2 <<EOF
 
 Usage:
-    ./test-image.sh -i <image repository>
-    ./test-image.sh --image <repository>
+    ./run-internal-tests.sh -i <image repository>
+    ./run-internal-tests.sh --image <repository>
 EOF
 
     exit 1
@@ -30,6 +30,7 @@ if [ ! "$image" ] ; then
     exit_with_usage
 fi
 
+# Run internal tests on a test image container
 docker run \
     --rm \
     "$image:test" \

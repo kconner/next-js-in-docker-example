@@ -4,14 +4,12 @@ function exit_with_usage {
     cat >&2 <<EOF
 
 Usage:
-    ./build-image.sh -i <image repository> [-t <target>] [-v <version>] [-p]
-    ./build-image.sh --image <repository> [--target <target>] [--version <version>] [--push]
+    ./build-image.sh -i <image repository> -t <target> [-v <version>]
+    ./build-image.sh --image <repository> --target <target> [--version <version>]
 EOF
 
     exit 1
 }
-
-target=archive-target
 
 while [ "$#" -gt 0 ] ; do
     case "$1" in
@@ -26,9 +24,6 @@ while [ "$#" -gt 0 ] ; do
         --version|-v)
             shift
             version="$1"
-            ;;
-        --push|-p)
-            push=true
             ;;
         *)
             echo "Unexpected: $1" >&2
@@ -55,43 +50,38 @@ if [ "$target" = "archive-target" ] ; then
     fi
 fi
 
-docker pull "$image:build" || true
+if [ "$target" = "test-target" ] ; then
+    # Download the last build stage image, which may contain reusable layers
+    docker pull "$image:build" || true
 
-docker build \
-    --target test-target \
-    --cache-from "$image:build" \
-    --tag "$image:test" \
-    .
+    # Build and tag the test stage image
+    docker build \
+        --target test-target \
+        --cache-from "$image:build" \
+        --tag "$image:test" \
+        .
+fi
 
-if [ "$target" != "test-target" ] ; then
-
+if [ "$target" = "build-target" ] ; then
+    # Build and tag the build stage image
     docker build \
         --target build-target \
+        --cache-from "$image:test" \
         --cache-from "$image:build" \
         --tag "$image:build" \
         .
+fi
 
-    if [ "$target" != "build-target" ] ; then
+if [ "$target" = "archive-target" ] ; then
+    # Download the last archive stage image, which may contain reusable layers
+    docker pull "$image:latest" || true
 
-        docker pull "$image:latest" || true
-
-        docker build \
-            --target archive-target \
-            --cache-from "$image:build" \
-            --cache-from "$image:latest" \
-            --tag "$image:$version" \
-            --tag "$image:latest" \
-            .
-
-        if [ "$push" ] ; then
-            docker push "$image:$version"
-            docker push "$image:latest"
-        fi
-
-    fi
-
-    if [ "$push" ] ; then
-        docker push "$image:build"
-    fi
-
+    # Build and tag the archive stage image
+    docker build \
+        --target archive-target \
+        --cache-from "$image:build" \
+        --cache-from "$image:latest" \
+        --tag "$image:$version" \
+        --tag "$image:latest" \
+        .
 fi
